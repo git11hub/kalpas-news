@@ -1,10 +1,11 @@
 import React from 'react';
+import ViewToggle from '../ViewToggle/ViewToggle';
 
-const SideBar = () => {
+const SideBar = ({show}) => {
     return (
         <div>
             <h3>Hi Reader,</h3>
-            <h3>Toggle</h3>
+            <ViewToggle show={show} />
             <h3>Feedback</h3>
         </div>
     );

@@ -1,15 +1,15 @@
-import React from "react";
-import ColumnView from "../ColumnView/ColumnView"
-import RowView from "../RowView/RowView"
+import React, { createContext, useContext, useState } from "react";
+import ColumnView from "../ColumnView/ColumnView";
+import RowView from "../RowView/RowView";
 
 const Home = () => {
-  return (
-    <>
-      <div className="container">
-        {/* <ColumnView /> */}
-        <RowView />        
+  const [show, setShow] = useState(true);
+
+  return (    
+      <div className="container">        
+          <RowView />       
       </div>
-    </>
+    
   );
 };
 

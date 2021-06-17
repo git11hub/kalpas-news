@@ -4,20 +4,13 @@ import SideBar from "../SideBar/SideBar";
 import { Avatar, IconButton } from "@material-ui/core";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { useState } from "react";
-import ReactPaginate from 'react-paginate';
-
+import ReactPaginate from "react-paginate";
 import TextTruncate from "react-text-truncate";
 
 const RowView = () => {
-  var TextTruncate = require("react-text-truncate");
+  // var TextTruncate = require("react-text-truncate");
 
   const [news, setNews] = useState([]);
-
-  // const idFind = news.find(new => event._id == id);
-
-  // const firstTen = news.slice(0, 10);
-
-  // console.log(news[0].id);
 
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -25,16 +18,14 @@ const RowView = () => {
   const pagesVisited = pageNumber * usersPerPage;
 
   const removeItem = (id) => {
-
-    const findingTitle = news.filter(singleNews => singleNews.id != id);
+    const findingTitle = news.filter((singleNews) => singleNews.id != id);
 
     return setNews(findingTitle);
-    
-  }
+  };
 
-  
   const displayNews = news
-    .slice(pagesVisited, pagesVisited + usersPerPage).map((singleNews) => (
+    .slice(pagesVisited, pagesVisited + usersPerPage)
+    .map((singleNews) => (
       <div className="row_view" style={{ width: "100%" }} key={singleNews.id}>
         <Avatar
           src={
@@ -77,9 +68,9 @@ const RowView = () => {
 
   const pageCount = Math.ceil(news.length / usersPerPage);
 
-  const changePage = ({selected}) => {
+  const changePage = ({ selected }) => {
     setPageNumber(selected);
-  }
+  };
 
   return (
     <div className="row mt-5">
@@ -89,17 +80,17 @@ const RowView = () => {
 
       <div className="col-9">
         {displayNews}
-        <ReactPaginate 
-          previousLabel = {"previous"}
-          nextLabel = {"Next"}
-          pageCount = {pageCount}
-          onPageChange = {changePage}
+        <ReactPaginate
+          previousLabel={"previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
           containerClassName={"paginationBtn"}
           previousLinkClassName={"previousBtn"}
           nextLinkClassName={"nextBtn"}
           disabledClassName={"paginationDisabled"}
           activeClassName={"paginationActive"}
-          pageRangeDisplayed = {"showThree"}
+          pageRangeDisplayed={"showThree"}
         />
       </div>
     </div>
