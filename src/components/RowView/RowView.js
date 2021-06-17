@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import "./RowView.css";
 import SideBar from "../SideBar/SideBar";
 import { Avatar, IconButton } from "@material-ui/core";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+// import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import CloseIcon from '@material-ui/icons/Close';
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import TextTruncate from "react-text-truncate";
@@ -55,7 +56,7 @@ const RowView = () => {
         </div>
         {/* <IconButton onClick={() => removeItem(singleNews.id)}> */}
         <IconButton onClick={() => removeItem(singleNews.id)}>
-          <DeleteForeverIcon color="secondary" />
+          <CloseIcon color="secondary" />
         </IconButton>
       </div>
     ));
@@ -73,25 +74,27 @@ const RowView = () => {
   };
 
   return (
-    <div className="row mt-5">
-      <div className="col-3">
-        <SideBar />
-      </div>
+    <div className="container">
+      <div className="row mt-5">
+        <div className="col-3">
+          <SideBar />
+        </div>
 
-      <div className="col-9">
-        {displayNews}
-        <ReactPaginate
-          previousLabel={"previous"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"paginationBtn"}
-          previousLinkClassName={"previousBtn"}
-          nextLinkClassName={"nextBtn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-          pageRangeDisplayed={"showThree"}
-        />
+        <div className="col-9">
+          {displayNews}
+          <ReactPaginate
+            previousLabel={"previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBtn"}
+            previousLinkClassName={"previousBtn"}
+            nextLinkClassName={"nextBtn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+            pageRangeDisplayed={"showThree"}
+          />
+        </div>
       </div>
     </div>
   );

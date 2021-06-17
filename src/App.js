@@ -20,10 +20,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <RowView />
         </Route>
         <Route path="/home">
-          <Home />
+          <RowView />
         </Route>
         <Route path="/column">
           <ColumnView />
