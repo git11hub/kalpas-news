@@ -13,26 +13,37 @@ const RowView = () => {
 
   const [news, setNews] = useState([]);
 
-  const firstTen = news.slice(0, 10);
+  // const idFind = news.find(new => event._id == id);
 
-  console.log(firstTen);
+  // const firstTen = news.slice(0, 10);
+
+  // console.log(news[0].id);
 
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 3;
+  const usersPerPage = 4;
   const pagesVisited = pageNumber * usersPerPage;
 
+  const removeItem = (id) => {
+
+    const findingTitle = news.filter(singleNews => singleNews.id != id);
+
+    return setNews(findingTitle);
+    
+  }
+
+  
   const displayNews = news
     .slice(pagesVisited, pagesVisited + usersPerPage).map((singleNews) => (
-      <div className="row_view" style={{ width: "100%" }}>
+      <div className="row_view" style={{ width: "100%" }} key={singleNews.id}>
         <Avatar
           src={
             singleNews.image ||
             "https://www.first.org/blog/_media/board_SF_2018.jpg"
           }
         />
-        <div class="card-body">
-          <h5 class="card-title">
+        <div className="card-body">
+          <h5 className="card-title">
             <TextTruncate
               line={1}
               element="span"
@@ -51,7 +62,8 @@ const RowView = () => {
           />
           <small>{singleNews.published}</small>
         </div>
-        <IconButton>
+        {/* <IconButton onClick={() => removeItem(singleNews.id)}> */}
+        <IconButton onClick={() => removeItem(singleNews.id)}>
           <DeleteForeverIcon color="secondary" />
         </IconButton>
       </div>
@@ -87,6 +99,7 @@ const RowView = () => {
           nextLinkClassName={"nextBtn"}
           disabledClassName={"paginationDisabled"}
           activeClassName={"paginationActive"}
+          pageRangeDisplayed = {"showThree"}
         />
       </div>
     </div>
