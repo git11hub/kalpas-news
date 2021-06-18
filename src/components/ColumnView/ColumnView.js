@@ -158,34 +158,6 @@ const ColumnView = () => {
         </div>
       </div>
     </div>
-
-    // <div className="container">
-    //   <Row className="mt-5">
-    //     <Col>
-    //       <SideBar />
-    //     </Col>
-
-    //     <Col>
-    //       {news.map((singleNews) => (
-    //         <div className="" style={{ width: "18rem" }}>
-    //           <div className="card-body">
-    //             <h5 className="card-title">{singleNews.title}</h5>
-    //             <p className="card-text">{singleNews.summary}</p>
-    //             <small>{singleNews.published}</small>
-    //           </div>
-    //           <img
-    //             src={
-    //               singleNews.image ||
-    //               "https://www.first.org/blog/_media/board_SF_2018.jpg"
-    //             }
-    //             class="card-img-top"
-    //             alt="..."
-    //           />
-    //         </div>
-    //       ))}
-    //     </Col>
-    //   </Row>
-    // </div>
   );
 };
 

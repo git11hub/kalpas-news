@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Feedback.css";
 import Modal from "react-modal";
 
@@ -45,12 +45,17 @@ const Feedback = () => {
     setIsOpen(false);
   }
 
+  const [show, setShow] = useState(true);
+
   return (
     <div className="feedback">
       <h3>Have a Feedback?</h3>
-      <button onClick={openModal} className="btn btn-info">
+      {show?<button onClick={openModal} className="btn btn-info">
         We're Listening!
-      </button>
+      </button>:
+      <button onClick={closeModal} className="btn btn-danger">
+        We're Listening!
+      </button>}
 
       {/* <button onClick={openModal}>Open Modal</button> */}
       <Modal
