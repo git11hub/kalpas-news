@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import './ViewToggle.css';
 
 const ViewToggle = () => {
   // const [show, setShow] = useContext();
 
   return (
-    <div>
-      <h1>View Toggle</h1>
+    <div className="view_toggle">
+      <h3>View Toggle</h3>
+      
       <Link to="/home">
-        <button>Row view</button>
+        <button className="btn btn-info m-1">Row view</button>
       </Link>
       <Link to="/column">
-      <button>Column view</button>
+      <button className="btn btn-info">Column view</button>
       </Link>
-      
     </div>
   );
 };
