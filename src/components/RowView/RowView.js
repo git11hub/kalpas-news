@@ -24,9 +24,11 @@ const customStyles = {
 
 const RowView = () => {
   // modal experiment here...
-  let subtitle;
+  // let subtitle;
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  console.log(modalIsOpen);
 
   function openModal() {
     setIsOpen(true);
@@ -98,7 +100,7 @@ const RowView = () => {
           contentLabel="Example Modal"
         >
           <ModalHeader>Provided link isn't working because of (CSP). That's why I linked with Lorem ipsum website as an alternative</ModalHeader>
-          <ModalBody style={{ height: "75vh", width: "120vh" }}>
+          <ModalBody style={{ height: "50vh", width: "95vh" }}>
             <iframe
               title={singleNews.title}
               style={{ height: "100%", width: "100%", borderStyle: "none" }}
@@ -144,21 +146,6 @@ const RowView = () => {
           />
         </div>
       </div>
-      {/* <Modal
-        isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <ModalHeader>{news.title}</ModalHeader>        
-        <ModalBody style={{height:"75vh", width: "120vh"}}>
-          <iframe
-            style={{ height: "100%", width: "100%", borderStyle: "none" }}
-            src={news.link || "https://www.atlassian.com/"}
-          />
-        </ModalBody>
-      </Modal> */}
     </div>
   );
 };

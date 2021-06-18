@@ -1,6 +1,6 @@
 import { Container } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import SideBar from "../SideBar/SideBar";
 
 //testing area from here
@@ -11,7 +11,32 @@ import CloseIcon from "@material-ui/icons/Close";
 import ReactPaginate from "react-paginate";
 import TextTruncate from "react-text-truncate";
 
+import { ModalBody } from "react-bootstrap";
+import ModalHeader from "react-bootstrap/esm/ModalHeader";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 const ColumnView = () => {
+  // Modal things here...
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   // var TextTruncate = require("react-text-truncate");
 
   const [news, setNews] = useState([]);
@@ -30,13 +55,13 @@ const ColumnView = () => {
   const displayNews = news
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((singleNews) => (
-      <div
+      <div onClick={openModal}
         className="column_view col-4 p-4 mb-4"
         // style={{ width: "33%" }}
         key={singleNews.id}
       >
         <div className="">
-          <h5 className="d-flex">
+          <h5 onClick={openModal} className="d-flex cursor_pointer">
             <TextTruncate
               line={2}
               element="span"
@@ -50,6 +75,7 @@ const ColumnView = () => {
           </h5>
 
           <TextTruncate
+            className="cursor_pointer"
             line={1}
             element="span"
             truncateText="…"
@@ -64,13 +90,33 @@ const ColumnView = () => {
           </p>
         </div>
         <img
+          onClick={openModal}
+          className="cursor_pointer"
           src={
             singleNews.image ||
             "https://www.first.org/blog/_media/board_SF_2018.jpg"
           }
           alt="news_image"
         />
-        {/* <IconButton onClick={() => removeItem(singleNews.id)}> */}
+        <Modal
+          isOpen={modalIsOpen}
+          // onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <ModalHeader>
+            Provided link isn't working because of (CSP). That's why I linked
+            with Lorem ipsum website as an alternative
+          </ModalHeader>
+          <ModalBody style={{ height: "50vh", width: "95vh" }}>
+            <iframe
+              title={singleNews.title}
+              style={{ height: "100%", width: "100%", borderStyle: "none" }}
+              src="https://www.lipsum.com/" // Provided link isn't working because of (CSP). That's why I linked with Lorem ipsum website as an alternative
+            />
+          </ModalBody>
+        </Modal>
       </div>
     ));
 
