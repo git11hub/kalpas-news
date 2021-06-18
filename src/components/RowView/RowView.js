@@ -22,6 +22,8 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement('#root');
+
 const RowView = () => {
   // modal experiment here...
   // let subtitle;
@@ -103,7 +105,7 @@ const RowView = () => {
           <ModalBody style={{ height: "50vh", width: "95vh" }}>
             <iframe
               title={singleNews.title}
-              style={{ height: "100%", width: "100%", borderStyle: "none" }}
+              style={{ height: "50vh", width: "104vh", borderStyle: "none" }}
             src="https://www.lipsum.com/" // Provided link isn't working because of (CSP). That's why I linked with Lorem ipsum website as an alternative
             />
           </ModalBody>

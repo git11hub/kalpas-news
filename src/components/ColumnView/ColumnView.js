@@ -1,7 +1,8 @@
 import { Container } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Modal } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
 import SideBar from "../SideBar/SideBar";
+import Modal from "react-modal";
 
 //testing area from here
 import "./ColumnView.css";
@@ -25,9 +26,11 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement('#root');
+
 const ColumnView = () => {
   // Modal things here...
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -112,7 +115,7 @@ const ColumnView = () => {
           <ModalBody style={{ height: "50vh", width: "95vh" }}>
             <iframe
               title={singleNews.title}
-              style={{ height: "100%", width: "100%", borderStyle: "none" }}
+              style={{ height: "50vh", width: "104vh", borderStyle: "none" }}
               src="https://www.lipsum.com/" // Provided link isn't working because of (CSP). That's why I linked with Lorem ipsum website as an alternative
             />
           </ModalBody>
